@@ -40,6 +40,7 @@ func main() {
 	fmt.Println("All data loaded successfully!")
 }
 
+// Cria os requisitos necessários para os nós
 func createConstraints(ctx context.Context, session neo4j.SessionWithContext) {
 	constraints := []string{
 		`CREATE CONSTRAINT country_code_unique IF NOT EXISTS FOR (c:Country) REQUIRE c.code IS UNIQUE`,
@@ -86,6 +87,7 @@ func formatDate(dateStr string) (string, error) {
 	return parsedDate.Format("2006-01-02"), nil
 }
 
+// Carrega os dados do arquivo WHO-COVI-19-global-data
 func loadGlobalData(ctx context.Context, session neo4j.SessionWithContext, filePath string) {
 	fmt.Printf("Loading data from file: %s\n", filePath)
 	f, err := os.Open(filePath)
@@ -159,6 +161,7 @@ func loadGlobalData(ctx context.Context, session neo4j.SessionWithContext, fileP
 	fmt.Printf("Finished processing %s\n", filePath)
 }
 
+// Carrega os dados do arquivo vaccination-metadata
 func loadVaccinationMetadata(ctx context.Context, session neo4j.SessionWithContext, filePath string) {
 	fmt.Printf("Loading data from file: %s\n", filePath)
 	f, err := os.Open(filePath)
@@ -244,6 +247,7 @@ func loadVaccinationMetadata(ctx context.Context, session neo4j.SessionWithConte
 	fmt.Printf("Finished processing %s\n", filePath)
 }
 
+// Carrega os dados do arquivo vaccination-data
 func loadVaccinationData(ctx context.Context, session neo4j.SessionWithContext, filePath string) {
 	fmt.Printf("Loading data from file: %s\n", filePath)
 	f, err := os.Open(filePath)

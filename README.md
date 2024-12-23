@@ -40,6 +40,14 @@ Após alguns minutos necessário a aplicação estara disponível na porta 8080,
 
 A seguir explicarei com detalhes o funcionamento e abordagem utilizada na solução.
 
+Caso esteja com o seguinte erro:
+
+```
+covid19-api | exec ./scripts/start.sh: no such file or directory covid19-api exited with code 1
+```
+
+Certifique-se de que o arquivo /scripts/start.sh esteja com formatação LF para rodar no container linux.
+
 
 ## Carregando os dados
 
