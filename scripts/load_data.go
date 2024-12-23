@@ -40,7 +40,7 @@ func main() {
 	fmt.Println("All data loaded successfully!")
 }
 
-// Cria os requisitos necessários para os nós
+// Cria os requisitos necessários para os nós e para otimização das consultas
 func createConstraints(ctx context.Context, session neo4j.SessionWithContext) {
 	constraints := []string{
 		`CREATE CONSTRAINT country_code_unique IF NOT EXISTS FOR (c:Country) REQUIRE c.code IS UNIQUE`,

@@ -132,6 +132,15 @@ O arquivo vaccination-data utiliza uma abreviatura de 2 letras para o código do
 
 Portanto tratar melhor os dados ajudaria a ter uma precisão maior.
 
+Por fim, a questão de performance:
+
+1. Foram criados constraints para fazer otimização na consulta de dados no arquivo load_data.go
+2. Para um ambiente de produção que teria uma quantidade de dados muito maior, considerar a implementação de um redis para armazenar resultados de consultas frequentes.
+3. Carregar os dados de maneira eficiente, como não era o foco do trabalho não foi elaborado. Mas talvez a utilização de goroutines de maneira assincrona possa ser estudado melhor.
+4. Utilização de clusters de Neo4j
+5. Logs, não foi implementado mas é uma pratica necessário para um ambiente de produção
+6. Load balancer ou Kubernetes, no caso de multiplos nós estudar a implementação dessas soluções.
+
 
 De considerações e melhorias que consigo pensar agora acredito que sejam essas.
 Qualquer dúvida, critica ou sugestão fico a disposição.
