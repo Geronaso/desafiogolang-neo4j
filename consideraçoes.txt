@@ -1,0 +1,4 @@
+O arquivo WHO-COVID-19-global-table-data.csv não foi utilizado por não possuir um campo de data e a relação de aresta estabelecida (REPORTED_ON) já é tratada no arquivo WHO-COVID-19-global-data.csv. O que me pareceu redundante para as perguntas feitas no desafio, portanto não foi carregado.
+
+Foi removido uma linha do arquivo vaccination-data.csv devido a sua inconsistencia de dados, o valor em questão:
+occupied Palestinian territory; including east Jerusalem;PSE;EMRO;REPORTING;18/10/2022;3748571;2012767;73;39;1776973;35;;02/02/2021;;336967;7

@@ -1,0 +1,29 @@
+### Teste do Endpoint /total-cases-deaths
+GET http://localhost:8080/total-cases-deaths?country=ER&date=2023-12-17
+Accept: application/json
+
+###
+
+### Teste do Endpoint /vaccinated
+GET http://localhost:8080/vaccinated?country=USA&date=2023-12-29
+Accept: application/json
+
+###
+
+### Teste do Endpoint /vaccines-used
+GET http://localhost:8080/vaccines-used?country=SAU
+Accept: application/json
+
+###
+
+### Teste do Endpoint /highest-cases
+GET http://localhost:8080/highest-cases?date=2023-07-23
+Accept: application/json
+
+###
+
+### Teste do Endpoint /most-used-vaccine
+GET http://localhost:8080/most-used-vaccine?region=EURO
+Accept: application/json
+
+###

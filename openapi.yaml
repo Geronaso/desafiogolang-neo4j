@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  title: API de Estatísticas de Covid-19
+  version: 1.0.0
+  description: Uma API para consultar estatísticas de Covid-19, incluindo casos, mortes e vacinação.
+paths:
+  /total-cases-deaths:
+    get:
+      summary: Obter casos e mortes acumulados em uma data especifica.
+      parameters:
+        - in: query
+          name: country
+          schema:
+            type: string
+          required: true
+          description: Código do país (e.g., US).
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: Data no formato YYYY-MM-DD.
+      responses:
+        '200':
+          description: Casos e mortes acumulados
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCumulativeCases:
+                    type: number
+                  totalCumulativeDeaths:
+                    type: number
+        '400':
+          description: Parâmetros ausentes ou inválidos
+        '404':
+          description: Dados não encontrados
+  /vaccinated:
+    get:
+      summary: Obter número de pessoas vacinadas em uma determinada data
+      parameters:
+        - in: query
+          name: country
+          schema:
+            type: string
+          required: true
+          description: Código do país (e.g., US).
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: Data no formato YYYY-MM-DD.
+      responses:
+        '200':
+          description: Número de pessoas vacinadas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalVaccinated:
+                    type: number
+        '400':
+          description: Parâmetros ausentes ou inválidos
+        '404':
+          description: Dados não encontrados
+  /vaccines-used:
+    get:
+      summary: Obter vacinas usadas em um país
+      parameters:
+        - in: query
+          name: country
+          schema:
+            type: string
+          required: true
+          description: Código do país (e.g., US).
+      responses:
+        '200':
+          description: Lista de vacinas usadas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    vaccine:
+                      type: string
+                    startDate:
+                      type: string
+                      format: date
+        '400':
+          description: Parâmetros ausentes ou inválidos
+        '404':
+          description: Dados não encontrados
+  /highest-cases:
+    get:
+      summary: Obter país com maior número de casos até uma determinada data
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: Data no formato YYYY-MM-DD.
+      responses:
+        '200':
+          description: País com maior número de casos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  country:
+                    type: string
+                  cases:
+                    type: number
+        '400':
+          description: Parâmetros ausentes ou inválidos
+        '404':
+          description: Dados não encontrados
+  /most-used-vaccine:
+    get:
+      summary: Obter vacina mais usada em uma região
+      parameters:
+        - in: query
+          name: region
+          schema:
+            type: string
+          required: true
+          description: Nome da região (e.g., EURO).
+      responses:
+        '200':
+          description: Vacina mais usada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vaccine:
+                    type: string
+                  usage:
+                    type: number
+        '400':
+          description: Parâmetros ausentes ou inválidos
+        '404':
+          description: Dados não encontrados
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
